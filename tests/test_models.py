@@ -200,12 +200,7 @@ class TestProductModel(unittest.TestCase):
         prod_list = product.serialize()
         prod_list["available"] = "abc"
 
-        # product.available = "abc"
-        # self.assertNotIsInstance(product.available, bool)
-
-        # prod_list = product.serialize()
         self.assertEqual(prod_list["id"], product.id)
-        # self.assertEqual(prod_list["available"], "abc")
         self.assertNotIsInstance(prod_list["available"], bool)
         self.assertRaises(DataValidationError, product.deserialize, product)
         self.assertRaises(DataValidationError, product.deserialize, prod_list)
